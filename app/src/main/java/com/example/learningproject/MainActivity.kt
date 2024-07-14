@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnClike.setOnClickListener {
+
             startActivity(Intent(this, TestActivity::class.java))
         }
     }
