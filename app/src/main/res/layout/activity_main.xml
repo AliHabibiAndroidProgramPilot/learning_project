@@ -10,7 +10,23 @@
         android:id="@+id/btn_clike"
         android:text="@string/clike"
         android:layout_gravity="center"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:scaleY="1"
+        android:max="10"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:scaleY="2"
+        android:max="10"
+        android:progress="5"
+        android:layout_margin="30dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

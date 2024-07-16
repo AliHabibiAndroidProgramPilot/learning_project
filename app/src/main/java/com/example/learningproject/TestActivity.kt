@@ -11,11 +11,5 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnPrevious.setOnClickListener {
-            val phoneNumber: String? = intent.getStringExtra("phoneNumber")
-            val id: Int = intent.getIntExtra("id", 0)
-            Toast.makeText(this,"phone: $phoneNumber id: $id", Toast.LENGTH_SHORT).show()
-
-        }
     }
 }
