@@ -15,5 +15,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var isChecked = false
+        binding.extendFloatingButton.setOnClickListener {
+            isChecked = if (isChecked) {
+                binding.extendFloatingButton.extend()
+                false
+            } else {
+                binding.extendFloatingButton.shrink()
+                true
+            }
+        }
     }
 }

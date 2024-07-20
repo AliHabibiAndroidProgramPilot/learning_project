@@ -8,17 +8,21 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extendFloatingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="228dp"
+        android:layout_marginBottom="320dp"
         android:backgroundTint="@color/purple_200"
-        app:rippleColor="@color/Activated_gold"
-        app:fabCustomSize="100dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="28dp"
+        android:text="@string/app_name"
+        android:textSize="20sp"
+        app:icon="@drawable/ic_add"
+        app:iconPadding="10dp"
+        app:iconSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="TODO"
-        app:srcCompat="@drawable/ic_add" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/Activated_gold" />
 </androidx.constraintlayout.widget.ConstraintLayout>
