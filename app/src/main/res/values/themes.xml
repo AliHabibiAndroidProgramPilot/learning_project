@@ -13,8 +13,4 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="CustomRatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/gold200</item>
-        <item name="colorControlActivated">@color/gold800</item>
-    </style>
 </resources>

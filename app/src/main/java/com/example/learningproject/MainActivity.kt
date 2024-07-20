@@ -14,13 +14,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val sharedPreferences: SharedPreferences = getSharedPreferences("userRating", MODE_PRIVATE)
-        binding.rbStarts.rating = sharedPreferences.getFloat("rate", 0.0f)
-        binding.rbStarts.setOnRatingBarChangeListener { _, rating, _ ->
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.putFloat("rate", rating)
-            editor.apply()
-            Toast.makeText(this, rating.toString(), Toast.LENGTH_LONG).show()
-        }
     }
 }
