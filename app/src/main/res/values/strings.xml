@@ -7,4 +7,11 @@
     <string name="delete">delete</string>
     <string name="add">add</string>
     <string name="share">share</string>
+    <string name="insert_contact">Insert Contact</string>
+    <string name="send_email">Send Email</string>
+    <string name="search_in_web">Search in Web</string>
+    <string name="open_web_page">Open Web Page</string>
+    <string name="open_setting">Open Setting</string>
+    <string name="dial_phone_number">Dial Phone Number</string>
+    <string name="share_text">Share Text</string>
 </resources>

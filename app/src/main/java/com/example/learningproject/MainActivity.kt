@@ -1,8 +1,17 @@
 package com.example.learningproject
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.provider.ContactsContract.Contacts
+import android.provider.Settings
+import android.view.View
+import android.widget.Toast
 import com.example.learningproject.databinding.ActivityMainBinding
+import java.net.URLEncoder
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -10,52 +19,72 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var isFloatingClicked = false
-        // Put Extended Floating Action Button in Shrink mode
-        binding.floatingActionButton.shrink()
-        binding.floatingActionButton.setOnClickListener {
-            // Play with "isFloatingClicked" Variable to Hide And Show Buttons
-            isFloatingClicked = if (isFloatingClicked) {
-                binding.floatingActionButton.shrink()
-                hideButtons()
-                false
-            } else {
-                binding.floatingActionButton.extend()
-                showButtons()
-                true
-            }
-        }
-        // Manage Buttons to Hide When Clicked
-        // By Using hideAfterClicked() Function And Put It On "isFloatingClicked" Variable
-        binding.shareButton.setOnClickListener {
-            isFloatingClicked = hideAfterClicked()
-        }
-        binding.deleteButton.setOnClickListener {
-            isFloatingClicked = hideAfterClicked()
-        }
-        binding.addButton.setOnClickListener {
-            isFloatingClicked = hideAfterClicked()
+    }
+    fun insertContact(view: View) {
+        val intent = Intent(Intent.ACTION_INSERT, Contacts.CONTENT_URI)
+        intent.putExtra(ContactsContract.Intents.Insert.NAME, "Ali Habibi")
+        intent.putExtra(ContactsContract.Intents.Insert.PHONE, "09924025474")
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "app Not Found", Toast.LENGTH_LONG).show()
         }
     }
-
-    private fun hideAfterClicked(): Boolean {
-        // Shrink, Hide Buttons and Send False State to "isFloatingClicked" Variable
-        binding.floatingActionButton.shrink()
-        hideButtons()
-        return false
+    fun sendEmail(view: View) {
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("biz.alihabibi@gmail.com")
+            putExtra(Intent.EXTRA_SUBJECT, "Congratulations")
+            putExtra(Intent.EXTRA_EMAIL, "Well Done Man you did great job")
+        }
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "$e app Not Found", Toast.LENGTH_LONG).show()
+        }
     }
-
-    private fun showButtons() {
-        // Show Buttons Using show()
-        binding.addButton.show()
-        binding.deleteButton.show()
-        binding.shareButton.show()
+    fun searchInWeb(view: View) {
+        val encodedQuery = URLEncoder.encode("Lionel Messi", "UTF-8")
+        val url = "https://www.google.com/search?q=$encodedQuery"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "app Not Found", Toast.LENGTH_LONG).show()
+        }
     }
-
-    private fun hideButtons() {
-        // Hide Buttons Using hide()
-        binding.addButton.hide()
-        binding.deleteButton.hide()
-        binding.shareButton.hide()
+    fun openWebPage(view: View) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.zoomit.ir/"))
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "app Not Found", Toast.LENGTH_LONG).show()
+        }
+    }
+    fun openSetting(view: View) {
+        val intent = Intent(Intent.ACTION_MAIN, Settings.System.CONTENT_URI)
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "$e app Not Found", Toast.LENGTH_LONG).show()
+        }
+    }
+    fun dialPhoneNumber(view: View) {
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("09120173084"))
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "$e app Not Found", Toast.LENGTH_LONG).show()
+        }
+    }
+    fun shareText(view: View) {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, "Your Amazing bro")
+        }
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "$e app Not Found", Toast.LENGTH_LONG).show()
+        }
     }
 }
