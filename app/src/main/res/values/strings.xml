@@ -2,4 +2,9 @@
     <string name="app_name">Learning_project</string>
     <string name="test_text">test text</string>
     <string name="click">click</string>
+    <string name="todo">TODO</string>
+    <string name="list">List</string>
+    <string name="delete">delete</string>
+    <string name="add">add</string>
+    <string name="share">share</string>
 </resources>
