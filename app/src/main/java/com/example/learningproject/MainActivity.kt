@@ -1,5 +1,6 @@
 package com.example.learningproject
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -30,18 +31,21 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "app Not Found", Toast.LENGTH_LONG).show()
         }
     }
+    @SuppressLint("IntentReset")
     fun sendEmail(view: View) {
-        val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("biz.alihabibi@gmail.com")
-            putExtra(Intent.EXTRA_SUBJECT, "Congratulations")
-            putExtra(Intent.EXTRA_EMAIL, "Well Done Man you did great job")
-        }
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.data = Uri.parse("mailto:")
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("biz.aliHabibi@gmail.com"))
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Email Subject")
+        intent.putExtra(Intent.EXTRA_TEXT, "Email Text")
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(this, "$e app Not Found", Toast.LENGTH_LONG).show()
         }
     }
+
     fun searchInWeb(view: View) {
         val encodedQuery = URLEncoder.encode("Lionel Messi", "UTF-8")
         val url = "https://www.google.com/search?q=$encodedQuery"
@@ -52,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "app Not Found", Toast.LENGTH_LONG).show()
         }
     }
+
     fun openWebPage(view: View) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.zoomit.ir/"))
         try {
@@ -60,22 +65,43 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "app Not Found", Toast.LENGTH_LONG).show()
         }
     }
+
     fun openSetting(view: View) {
-        val intent = Intent(Intent.ACTION_MAIN, Settings.System.CONTENT_URI)
+        val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
+        /*
+            ACTION_SETTINGS
+            ACTION_WIRELESS_SETTINGS
+            ACTION_AIRPLANE_MODE_SETTINGS
+            ACTION_WIFI_SETTINGS
+            ACTION_APN_SETTINGS
+            ACTION_BLUETOOTH_SETTINGS
+            ACTION_DATE_SETTINGS
+            ACTION_LOCALE_SETTINGS
+            ACTION_INPUT_METHOD_SETTINGS
+            ACTION_DISPLAY_SETTINGS
+            ACTION_SECURITY_SETTINGS
+            ACTION_LOCATION_SOURCE_SETTINGS
+            ACTION_INTERNAL_STORAGE_SETTINGS
+            ACTION_MEMORY_CARD_SETTINGS
+         */
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(this, "$e app Not Found", Toast.LENGTH_LONG).show()
         }
     }
+
     fun dialPhoneNumber(view: View) {
-        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("09120173084"))
+        val phoneNumber = "09120173084"
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$phoneNumber")
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(this, "$e app Not Found", Toast.LENGTH_LONG).show()
         }
     }
+
     fun shareText(view: View) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
