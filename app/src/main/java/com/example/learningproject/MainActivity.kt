@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
+import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learningproject.databinding.ActivityMainBinding
 
@@ -14,18 +17,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Handler(Looper.getMainLooper()).postDelayed({/*orders*/ }, 5000)
-    }
-
-    @Deprecated("Deprecated in Java",
-        ReplaceWith("super.onBackPressed()", "androidx.appcompat.app.AppCompatActivity"))
-    override fun onBackPressed() {
-        if (doubleBackExit) {
-            super.onBackPressed()
-            return
-        }
-        doubleBackExit = true
-        Toast.makeText(this, "Click gain to Exit", Toast.LENGTH_SHORT).show()
-        Handler(Looper.getMainLooper()).postDelayed({ doubleBackExit = false }, 3000)
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                if (doubleBackExit) {
+                    finish()
+                }
+                doubleBackExit = true
+                Toast.makeText(this@MainActivity, "Click twice to Exit", Toast.LENGTH_SHORT).show()
+                Handler(Looper.getMainLooper()).postDelayed({doubleBackExit = false}, 2500)
+            }
+        })
     }
 }
