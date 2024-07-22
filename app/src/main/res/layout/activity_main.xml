@@ -8,55 +8,5 @@
     android:gravity="center_horizontal"
     tools:ignore="UsingOnClickInXml,onClick"
     tools:context=".MainActivity">
-    <Button
-        android:layout_marginTop="50dp"
-        android:text="@string/insert_contact"
-        android:textSize="22sp"
-        android:onClick="insertContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_margin="10dp"
-        android:text="@string/send_email"
-        android:textSize="22sp"
-        android:onClick="sendEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_margin="10dp"
-        android:text="@string/search_in_web"
-        android:textSize="22sp"
-        android:onClick="searchInWeb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_margin="10dp"
-        android:text="@string/open_web_page"
-        android:textSize="22sp"
-        android:onClick="openWebPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:onClick="openSetting"
-        android:text="@string/open_setting"
-        android:textSize="22sp" />
-
-    <Button
-        android:layout_margin="10dp"
-        android:text="@string/dial_phone_number"
-        android:textSize="22sp"
-        android:onClick="dialPhoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_margin="10dp"
-        android:text="@string/share_text"
-        android:textSize="22sp"
-        android:onClick="shareText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 </LinearLayout>
