@@ -1,16 +1,13 @@
 package com.example.learningproject
 
 import android.app.AlertDialog
-import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
-import androidx.activity.OnBackPressedDispatcherOwner
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import com.example.learningproject.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -19,14 +16,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.show.setOnClickListener {
-            val dialog: AlertDialog.Builder = AlertDialog.Builder(this)
-            dialog.setTitle("Error Found")
-            dialog.setMessage("User within the local database not found")
-            dialog.setNeutralButton("Retry") { _, _ ->  }
-            dialog.setPositiveButton("Report") { _, _ ->  }
-            dialog.setNegativeButton("Ignore") { _, _ ->  }
-            dialog.setIcon(R.drawable.ic_add)
-            dialog.create().show()
+            val snackBar = Snackbar.make(binding.root, "No Connection", Snackbar.LENGTH_LONG)
+            snackBar.setAction("Ok") {
+                snackBar.dismiss()
+            }
+            snackBar.setTextColor(Color.WHITE)
+            snackBar.setActionTextColor(Color.MAGENTA)
+            snackBar.setBackgroundTint(Color.RED)
+            snackBar.setActionTextColor(Color.YELLOW)
+            snackBar.show()
         }
     }
 }
