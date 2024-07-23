@@ -1,5 +1,7 @@
 package com.example.learningproject
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,20 +14,19 @@ import com.example.learningproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var doubleBackExit: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                if (doubleBackExit) {
-                    finish()
-                }
-                doubleBackExit = true
-                Toast.makeText(this@MainActivity, "Click twice to Exit", Toast.LENGTH_SHORT).show()
-                Handler(Looper.getMainLooper()).postDelayed({doubleBackExit = false}, 2500)
-            }
-        })
+        binding.show.setOnClickListener {
+            val dialog: AlertDialog.Builder = AlertDialog.Builder(this)
+            dialog.setTitle("Error Found")
+            dialog.setMessage("User within the local database not found")
+            dialog.setNeutralButton("Retry") { _, _ ->  }
+            dialog.setPositiveButton("Report") { _, _ ->  }
+            dialog.setNegativeButton("Ignore") { _, _ ->  }
+            dialog.setIcon(R.drawable.ic_add)
+            dialog.create().show()
+        }
     }
 }
