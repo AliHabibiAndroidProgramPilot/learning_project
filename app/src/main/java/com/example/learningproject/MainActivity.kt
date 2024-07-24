@@ -1,10 +1,21 @@
 package com.example.learningproject
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import android.view.KeyEvent
+import android.view.View
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learningproject.databinding.ActivityMainBinding
@@ -15,53 +26,72 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (isConnected())
+            setWebView()
+        else
+            showDialogError()
     }
-    /**
-     * @author Ali habibi
-     * @see isConnected2
-     * This is a methode one not to efficient but we can handle which way Internet is coming WIFI, MOBILE_NETWORK or ETHERNET
-     * @return Boolean variable to detect connection
-     */
 
-    fun isConnected1(): Boolean {
-        var networkState = false
-        // In Activity class we don't need to use Context class to get reach to getSystemService function and CONNECTIVITY_SERVICE
-        val connectivityManager =
-            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        // Check if user's API level is above 23
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // Safe null action by using (?:)
-            val networkCapabilities = connectivityManager.activeNetwork ?: return networkState
-            // Look for available connection
-            val activeNetwork = connectivityManager.getNetworkCapabilities(networkCapabilities)
-                ?: return networkState
-            networkState = when {
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                else -> false
+    override fun onResume() {
+        super.onResume()
+        if (!isConnected())
+            showDialogError()
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun setWebView() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.settings.setSupportZoom(true)
+        binding.webView.loadUrl("https://bitpin.ir/academy/")
+        binding.webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                binding.progressBar.visibility = View.INVISIBLE
             }
-            // If user's API Level wasn't above 23
-        } else {
-            val netInfo = connectivityManager.activeNetworkInfo
-            networkState = when (netInfo!!.type) {
-                ConnectivityManager.TYPE_WIFI -> true
-                ConnectivityManager.TYPE_MOBILE -> true
-                ConnectivityManager.TYPE_ETHERNET -> true
-                else -> false
+
+            @Deprecated("Deprecated in Java")
+            override fun onReceivedError(
+                view: WebView?,
+                errorCode: Int,
+                description: String?,
+                failingUrl: String?
+            ) {
+                binding.progressBar.visibility = View.INVISIBLE
+                showDialogError()
             }
         }
-        return networkState
     }
 
-    /**
-     * @author Ali Habibi
-     * More Efficient way to check connection
-     * @return Boolean variable to detect connection
-     */
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK && binding.webView.canGoBack()) {
+            binding.webView.goBack()
+            true
+        } else
+            super.onKeyDown(keyCode, event)
+    }
 
-    fun isConnected2(): Boolean {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private fun showDialogError() {
+        val dialog = AlertDialog.Builder(this)
+        dialog.setIcon(R.drawable.ic_error)
+        dialog.setTitle("Failed to load website")
+        dialog.setMessage("Failed to load website this might be due to Internet Connection or problem related to website")
+        dialog.setNeutralButton("Setting") { _, _ ->
+            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
+            onResume()
+
+        }
+        dialog.setPositiveButton("Retry") { _, _ ->
+            recreate()
+        }
+        dialog.setNegativeButton("Exit") { _, _ ->
+            finishAffinity()
+        }
+        dialog.create().show()
+    }
+
+    private fun isConnected(): Boolean {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
         return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
