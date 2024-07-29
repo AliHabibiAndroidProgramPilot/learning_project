@@ -1,6 +1,7 @@
 package com.example.learningproject
 
 import android.graphics.drawable.Icon
+import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -38,8 +39,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playPauseMusic() {
-        if(mediaPlayer == null)
-            mediaPlayer = MediaPlayer.create(this, R.raw.test_sound)
+        if(mediaPlayer == null) {
+            //mediaPlayer = MediaPlayer.create(this, R.raw.test_sound)
+            mediaPlayer = MediaPlayer()
+            mediaPlayer?.setAudioAttributes( AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .build()
+            )
+            mediaPlayer?.setDataSource("https://static1.squarespace.com/static/5abcedbb5417fcb65ba53771/t/600219d91222a2448d95f58f/1611007518392/Soul+Food+MP3.mp3/original/Soul+Food+MP3.mp3?download=true")
+            mediaPlayer?.prepare()
+        }
         mediaPlayer?.start()
         initSeekBar()
         if (fabIconState)
