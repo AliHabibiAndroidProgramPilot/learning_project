@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imgFilter"
         android:layout_width="380dp"
@@ -42,7 +43,6 @@
         app:layout_constraintStart_toStartOf="@+id/seekBar"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
-
     <SeekBar
         android:id="@+id/seekBar3"
         android:layout_width="0dp"
@@ -53,6 +53,7 @@
         app:layout_constraintEnd_toEndOf="@+id/seekBar2"
         app:layout_constraintStart_toStartOf="@+id/seekBar2"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+
     <SeekBar
         android:id="@+id/seekBar4"
         android:layout_width="380dp"
@@ -63,6 +64,7 @@
         app:layout_constraintEnd_toEndOf="@+id/seekBar3"
         app:layout_constraintStart_toStartOf="@+id/seekBar3"
         app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
+
     <SeekBar
         android:id="@+id/seekBar5"
         android:layout_width="380dp"
@@ -73,4 +75,22 @@
         app:layout_constraintEnd_toEndOf="@+id/seekBar4"
         app:layout_constraintStart_toStartOf="@+id/seekBar4"
         app:layout_constraintTop_toBottomOf="@+id/seekBar4" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="seekBar, seekBar2, seekBar3, seekBar4, seekBar5, imgFilter"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="238dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

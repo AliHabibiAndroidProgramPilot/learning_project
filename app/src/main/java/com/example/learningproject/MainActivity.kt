@@ -17,54 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, progress: Int, fromuser: Boolean) {
-                if (fromuser) binding.imgFilter.contrast = progress.toFloat() / 10
-            }
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-            }
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-
-            }
-        })
-        binding.seekBar2.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, progress: Int, fromuser: Boolean) {
-                if (fromuser) binding.imgFilter.saturation = progress.toFloat() / 10
-            }
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-            }
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-
-            }
-        })
-        binding.seekBar3.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, progress: Int, fromuser: Boolean) {
-                if (fromuser) binding.imgFilter.brightness = progress.toFloat() / 10
-            }
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-            }
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-
-            }
-        })
-        binding.seekBar4.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, progress: Int, fromuser: Boolean) {
-                if (fromuser) binding.imgFilter.warmth = progress.toFloat() / 10
-            }
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-            }
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-
-            }
-        })
-        binding.seekBar5.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, progress: Int, fromuser: Boolean) {
-                binding.imgFilter.rotation = progress.toFloat()
-            }
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-            }
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-            }
-        })
+        binding.button.setOnClickListener {
+            binding.group.visibility = View.INVISIBLE
+        }
     }
 }
