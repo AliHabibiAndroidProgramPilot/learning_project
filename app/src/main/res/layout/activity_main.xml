@@ -1,38 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/test_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imgFilter"
+        android:layout_width="380dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/test_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="فونت فارسی"
-        android:textDirection="rtl"
-        android:textSize="26sp"
-        android:textColor="@color/black"/>
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:max="20"
+        android:progress="10"
+        app:layout_constraintEnd_toEndOf="@+id/imgFilter"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgFilter"
+        app:layout_constraintTop_toBottomOf="@+id/imgFilter" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/test_text"
-        android:fontFamily="@font/roboto"
-        android:textSize="26sp"
-        android:textColor="@color/black" />
-</LinearLayout>
+        android:layout_marginTop="40dp"
+        android:max="20"
+        android:progress="10"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar"
+        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+
+    <SeekBar
+        android:id="@+id/seekBar3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:max="20"
+        android:progress="10"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar2"
+        app:layout_constraintStart_toStartOf="@+id/seekBar2"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+    <SeekBar
+        android:id="@+id/seekBar4"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:max="20"
+        android:progress="10"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar3"
+        app:layout_constraintStart_toStartOf="@+id/seekBar3"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
+    <SeekBar
+        android:id="@+id/seekBar5"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:max="180"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar4"
+        app:layout_constraintStart_toStartOf="@+id/seekBar4"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar4" />
+</androidx.constraintlayout.widget.ConstraintLayout>
