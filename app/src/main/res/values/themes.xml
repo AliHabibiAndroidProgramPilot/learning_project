@@ -12,8 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-    </style>
-    <style name="test" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">@color/gray</item>
+        <item name="fontFamily">@font/iran_sans</item>
     </style>
 </resources>
