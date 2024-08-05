@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,89 +9,39 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imgFilter"
-        android:layout_width="380dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/test_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <SeekBar
-        android:id="@+id/seekBar"
+    <Button
+        android:id="@+id/btn1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:max="20"
-        android:progress="10"
-        app:layout_constraintEnd_toEndOf="@+id/imgFilter"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imgFilter"
-        app:layout_constraintTop_toBottomOf="@+id/imgFilter" />
-
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:max="20"
-        android:progress="10"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar"
-        app:layout_constraintStart_toStartOf="@+id/seekBar"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
-    <SeekBar
-        android:id="@+id/seekBar3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:max="20"
-        android:progress="10"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar2"
-        app:layout_constraintStart_toStartOf="@+id/seekBar2"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
-
-    <SeekBar
-        android:id="@+id/seekBar4"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:max="20"
-        android:progress="10"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar3"
-        app:layout_constraintStart_toStartOf="@+id/seekBar3"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
-
-    <SeekBar
-        android:id="@+id/seekBar5"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:max="180"
-        android:progress="0"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar4"
-        app:layout_constraintStart_toStartOf="@+id/seekBar4"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar4" />
+        android:layout_marginBottom="10dp"
+        android:text="Sign in"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/click"
+        android:layout_marginBottom="10dp"
+        android:text="Login"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn1" />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="seekBar, seekBar2, seekBar3, seekBar4, seekBar5, imgFilter"
-        tools:layout_editor_absoluteX="197dp"
-        tools:layout_editor_absoluteY="238dp" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/support_simple_spinner_dropdown_item"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
