@@ -11,19 +11,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btn1.setOnClickListener {
-            //SIGN IN
-            replaceFragment(SignInFragment())
-        }
-        binding.btn2.setOnClickListener {
-            //LOGIN
-            replaceFragment(LoginFragment())
-        }
+        binding.btnMainLogin.setOnClickListener { replace(R.id.fragmentContainer, LoginFragment()) }
+        binding.btnImage.setOnClickListener { replace(R.id.fragmentContainer, ImageFragment()) }
     }
-
-    private fun replaceFragment(fragment: Fragment) {
+    private fun replace(viewId: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
+            .replace(viewId, fragment)
             .commit()
     }
 }
