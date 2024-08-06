@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_home"
         android:title="home"/>
     <item
-        android:id="@+id/paus"
+        android:id="@+id/pause_menu"
         android:icon="@drawable/ic_pause"
         android:title="@string/pause"/>
 </menu>
