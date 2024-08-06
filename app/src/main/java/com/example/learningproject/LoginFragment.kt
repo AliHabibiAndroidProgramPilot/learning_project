@@ -14,11 +14,15 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = LoginFragmentBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.btnLogin.setOnClickListener {
             Toast.makeText(context, "login button", Toast.LENGTH_SHORT).show()
         }
-        return binding.root
     }
 }
