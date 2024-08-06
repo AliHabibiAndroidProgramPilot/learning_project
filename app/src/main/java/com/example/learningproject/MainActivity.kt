@@ -11,8 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnMainLogin.setOnClickListener { replace(R.id.fragmentContainer, LoginFragment()) }
-        binding.btnImage.setOnClickListener { replace(R.id.fragmentContainer, ImageFragment()) }
     }
     private fun replace(viewId: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction()
