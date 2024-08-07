@@ -8,20 +8,15 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <androidx.fragment.app.FragmentContainerView
-        app:defaultNavHost="true"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/navigation"
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_weight="0.8"
-        android:layout_height="0dp"
-        tools:layout="@layout/support_simple_spinner_dropdown_item" />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        app:menu="@menu/bottom_nav_menu"
-        android:layout_width="match_parent"
-        android:layout_weight="0.1"
-        android:layout_height="0dp"/>
+    <Button
+        android:id="@+id/btn_test"
+        android:text="@string/click"
+        android:textSize="28sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ViewStub
+        android:id="@+id/ViewStub"
+        android:layout="@layout/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
