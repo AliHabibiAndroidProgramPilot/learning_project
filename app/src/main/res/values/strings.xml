@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Learning_project</string>
     <string name="test_text">test text</string>
+
     <style name="dev_name">Ali Habibi</style>
+
     <string name="click">click</string>
     <string name="todo">TODO</string>
     <string name="play">play</string>

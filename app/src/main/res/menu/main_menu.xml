@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:title="Delete"
         android:id="@+id/delete_item"/>
     <item
@@ -15,8 +15,8 @@
         android:id="@+id/Exit_item"/>
     <item
         android:icon="@drawable/ic_home"
+        app:showAsAction="never"
         android:title="rename"
-        app:showAsAction="ifRoom"
         android:id="@+id/rename_item"/>
     <item
         app:showAsAction="never"
