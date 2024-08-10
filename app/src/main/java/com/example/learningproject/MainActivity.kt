@@ -1,11 +1,9 @@
 package com.example.learningproject
 
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.Window
-import android.view.WindowInsets
-import android.view.WindowManager
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learningproject.databinding.ActivityMainBinding
 
@@ -15,15 +13,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-            window.attributes
-                .layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.delete_item -> {
+                Toast.makeText(this, "delete", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.Exit_item -> {
+                Toast.makeText(this, "Exit", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.share_item -> {
+                Toast.makeText(this, "share", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.rename_item -> {
+                Toast.makeText(this, "rename", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.report_item -> {
+                Toast.makeText(this, "report", Toast.LENGTH_LONG).show()
+                true
+            }
+            else -> false
         }
     }
 }

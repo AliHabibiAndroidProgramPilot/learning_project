@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        app:showAsAction="ifRoom"
+        android:title="Delete"
+        android:id="@+id/delete_item"/>
+    <item
+        app:showAsAction="never"
+        android:title="share"
+        android:id="@+id/share_item"/>
+    <item
+        app:showAsAction="never"
+        android:title="Exit"
+        android:id="@+id/Exit_item"/>
+    <item
+        android:icon="@drawable/ic_home"
+        android:title="rename"
+        app:showAsAction="ifRoom"
+        android:id="@+id/rename_item"/>
+    <item
+        app:showAsAction="never"
+        android:title="Report"
+        android:id="@+id/report_item"/>
+</menu>

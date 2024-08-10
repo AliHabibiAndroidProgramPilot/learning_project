@@ -14,9 +14,4 @@
         android:textSize="28sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <ViewStub
-        android:id="@+id/ViewStub"
-        android:layout="@layout/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 </LinearLayout>
