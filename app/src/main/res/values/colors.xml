@@ -7,6 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Activated_gold">#FFD700</color>
-    <color name="gray">#474747</color>
+    <color name="red_800">#C62828</color>
+    <color name="pink_800">#AD1457</color>
+    <color name="purple_800">#6A1B9A</color>
+    <color name="blue_800">#1565C0</color>
+    <color name="green_800">#2E7D32</color>
+    <color name="light_green_800">#558B2F</color>
+    <color name="yellow_800">#F9A825</color>
+    <color name="orange_800">#EF6C00</color>
+    <color name="brown_800">#4E342E</color>
+    <color name="blueGray_800">#37474F</color>
 </resources>

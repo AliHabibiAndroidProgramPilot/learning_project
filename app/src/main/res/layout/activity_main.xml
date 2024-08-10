@@ -11,7 +11,15 @@
     <Button
         android:id="@+id/btn_test"
         android:text="@string/click"
-        android:textSize="28sp"
+        android:textSize="24sp"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <CheckBox
+        android:text="@string/test_text"
+        android:textSize="24sp"
+        android:checked="true"
+        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>
