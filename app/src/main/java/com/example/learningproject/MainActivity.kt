@@ -15,17 +15,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Define our toolbar as action bar to Android
-        setSupportActionBar(binding.mainToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        // Hides default title of action bar
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.title = "test title"
-        supportActionBar?.subtitle = "test subtitle"
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
+        binding.btn.setOnClickListener {
+            /*
+            binding.img.animate().alpha(1f).duration = 35000
+            binding.img.animate().translationX(120f).duration = 15000
+            binding.img.animate().translationY(120f).duration = 15000
+            binding.img.animate().scaleY(2f).duration = 15000
+            */
+        }
     }
 }
