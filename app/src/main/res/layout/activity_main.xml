@@ -5,96 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/img"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="15dp"
-        android:contentDescription="@string/test_text"
-        android:src="@drawable/gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cat"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_scale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="scale"
-        android:onClick="onClick"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img" />
-
-    <Button
-        android:id="@+id/btn_Fadein"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:onClick="onClick"
-        android:text="fade in"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_rotate"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_rotate"
-        app:layout_constraintTop_toBottomOf="@+id/btn_rotate" />
-
-    <Button
-        android:id="@+id/btn_translate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="translate"
-        android:onClick="onClick"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_Fadein"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="@+id/btn_Fadein"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Fadein" />
-
-    <Button
-        android:id="@+id/btn_scaleRotate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="5dp"
-        android:onClick="onClick"
-        android:text="scale rotate"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_scale"
-        app:layout_constraintHorizontal_bias="0.736"
-        app:layout_constraintStart_toStartOf="@+id/btn_scale"
-        app:layout_constraintTop_toBottomOf="@+id/btn_scale" />
-
-    <Button
-        android:id="@+id/btn_rotate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="rotate"
-        android:onClick="onClick"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toEndOf="@+id/btn_scale"
-        app:layout_constraintTop_toBottomOf="@+id/img" />
-
-    <Button
-        android:id="@+id/btn_fadeout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:onClick="onClick"
-        android:text="fade out"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_scaleRotate"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_scaleRotate"
-        app:layout_constraintTop_toBottomOf="@+id/btn_scaleRotate" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
