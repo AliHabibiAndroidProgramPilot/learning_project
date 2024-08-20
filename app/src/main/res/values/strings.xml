@@ -9,4 +9,21 @@
     <string name="play">play</string>
     <string name="pause">pause</string>
     <string name="stop">stop</string>
+    <string name="LongText">
+        "Aenean ac sagittis mi. In condimentum purus vel sem interdum tristique. Nulla risus ante, placerat in posuere ut, maximus non nisi.\n Maecenas posuere sem non dolor congue, sed tempus nulla molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras interdum ante tempor est egestas, quis vestibulum risus faucibus. Donec tincidunt eget neque vel porta. Morbi vitae felis in lectus laoreet pulvinar.\n
+
+Aliquam ut varius lorem, ut elementum tortor. Nunc sagittis dolor ligula, in finibus erat dapibus a. Donec ante lacus, placerat ut augue in, aliquet egestas nisl. Maecenas eleifend eget dui pulvinar facilisis. Aenean vitae neque ac tortor rhoncus suscipit sed sodales turpis. Curabitur semper quis odio sed aliquam. Duis eleifend ligula ut metus accumsan posuere. Cras quis bibendum sapien. Quisque at congue odio\n\n
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et nunc congue, pulvinar felis et, molestie quam. Integer sodales mauris sed elit dictum interdum. In hac habitasse platea dictumst.\n Quisque tristique leo eu fringilla efficitur. Phasellus imperdiet metus diam, in egestas eros elementum sit amet. Nulla nisi dui, iaculis eget leo vehicula, porta eleifend dui. Donec euismod tincidunt sodales. Aliquam eleifend auctor ornare. Nam rhoncus massa nunc, sed efficitur orci pellentesque quis. Vestibulum in iaculis enim. Etiam pellentesque ante lacus, a mattis dolor pretium sit amet"
+    </string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>
