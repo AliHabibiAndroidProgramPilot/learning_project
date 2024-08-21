@@ -11,6 +11,5 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.collapseToolBar.title = "Set text"
     }
 }

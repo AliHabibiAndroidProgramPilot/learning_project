@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Learning_project</string>
+    <string name="app_name">اپلیکیشن من</string>
+    <string name="name">نام</string>
+    <string name="test_text">متن تستی</string>
+    <string name="click">کلیک</string>
+    <string name="change_language">تغییر زبان</string>
 </resources>
