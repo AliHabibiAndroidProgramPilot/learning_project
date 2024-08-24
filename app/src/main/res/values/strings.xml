@@ -11,5 +11,7 @@
     <style name="dev_name">Ali Habibi</style>
     <string name="name">Name</string>
     <string name="change_language">Change Language</string>
-
+    <!-- Navigation Drawer Open and Close -->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 </resources>
