@@ -1,6 +1,7 @@
 package com.example.learningproject
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -13,65 +14,19 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-    /*private val drawerLayout: DrawerLayout
-        get() = binding.drawableLayoutParent
-    private val actionBarDrawerToggle: ActionBarDrawerToggle
-        get() = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolBar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainer, FirstFragment())
-            .commit()
-        val actionBarDrawerToggle = ActionBarDrawerToggle(
+        val content: Array<String> = arrayOf("apple", "samsung", "Google Pixel", "Nothing", "Honor", "Nokia")
+        val adapter = ArrayAdapter(
             this,
-            binding.drawableLayoutParent,
-            binding.toolBar,
-            R.string.nav_open,
-            R.string.nav_close
+            android.R.layout.simple_list_item_1,
+            content
         )
-        actionBarDrawerToggle.isDrawerIndicatorEnabled = true
-        binding.drawableLayoutParent.addDrawerListener(actionBarDrawerToggle)
-        actionBarDrawerToggle.syncState()
-        binding.navigationView.setNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.item_1 -> {
-                   supportFragmentManager.beginTransaction()
-                       .replace(R.id.fragmentContainer, FirstFragment())
-                       .commit()
-                    binding.drawableLayoutParent.closeDrawers()
-                    true
-                }
-                R.id.item_2 -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, SecondFragment())
-                        .commit()
-                    binding.drawableLayoutParent.closeDrawers()
-                    true
-                }
-                R.id.item_3 -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, ThirdFragment())
-                        .commit()
-                    binding.drawableLayoutParent.closeDrawers()
-                    true
-                }
-                R.id.item_4 -> {
-                    Toast.makeText(this, "item 4", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.item_5 -> {
-                    Toast.makeText(this, "item 5", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> {
-                    false
-                }
-            }
+        binding.autoComplete.setAdapter(adapter)
+        binding.autoComplete.setOnFocusChangeListener { _, focused ->
+            if (focused) binding.autoComplete.showDropDown()
         }
     }
 }
