@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val tabItem = arrayOf("Click", "Learning Project", "TODO")
-        binding.viewPager.adapter = CustomAdapter(supportFragmentManager, lifecycle)
+        binding.viewPager.adapter = CustomAdapter(tabItem.size, supportFragmentManager, lifecycle)
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = tabItem[position]
         } .attach()
