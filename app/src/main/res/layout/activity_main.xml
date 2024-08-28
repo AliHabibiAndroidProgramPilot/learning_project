@@ -8,17 +8,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <androidx.appcompat.widget.AppCompatEditText
+    <TextView
+        android:id="@+id/textView"
+        android:textSize="26sp"
         android:textColor="@color/black"
-        android:text="@string/todo"
-        android:layout_margin="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <MultiAutoCompleteTextView
-        android:id="@+id/autoComplete"
+        android:layout_gravity="center_horizontal"
+        tools:text="@string/test_text"
         android:layout_margin="20dp"
-        android:hint="@string/test_text"
-        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/Spinner"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

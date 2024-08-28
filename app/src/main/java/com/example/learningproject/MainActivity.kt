@@ -1,6 +1,8 @@
 package com.example.learningproject
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.MultiAutoCompleteTextView
 import android.widget.Toast
@@ -22,13 +24,15 @@ class MainActivity : AppCompatActivity() {
         val content: Array<String> = arrayOf("apple", "samsung", "Google Pixel", "Nothing", "Honor", "Nokia")
         val adapter = ArrayAdapter(
             this,
-            android.R.layout.simple_list_item_1,
+            android.R.layout.simple_spinner_item,
             content
         )
-        binding.autoComplete.setAdapter(adapter)
-        binding.autoComplete.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
-        binding.autoComplete.setOnFocusChangeListener { _, focused ->
-            if (focused) binding.autoComplete.showDropDown()
+        binding.Spinner.adapter = adapter
+        binding.Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, index: Int, p3: Long) {
+                binding.textView.text = content[index]
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
     }
 }
