@@ -2,6 +2,7 @@ package com.example.learningproject
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.MultiAutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             content
         )
         binding.autoComplete.setAdapter(adapter)
+        binding.autoComplete.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
         binding.autoComplete.setOnFocusChangeListener { _, focused ->
             if (focused) binding.autoComplete.showDropDown()
         }
