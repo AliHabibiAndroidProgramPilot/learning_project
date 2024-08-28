@@ -8,19 +8,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:id="@+id/textInputLayout"
-        android:layout_margin="30dp"
-        android:hint="@string/test_text"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <AutoCompleteTextView
-            android:id="@+id/test"
-            android:layout_margin="10dp"
-            android:inputType="none"
-            android:layout_width="match_parent"
+        <com.google.android.material.tabs.TabItem
+            android:text="@string/todo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.tabs.TabItem
+            android:text="@string/click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.google.android.material.tabs.TabItem
+            android:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
+        tools:layout="@layout/support_simple_spinner_dropdown_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

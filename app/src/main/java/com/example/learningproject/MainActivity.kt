@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
 import com.example.learningproject.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,13 +22,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val content: Array<String> =
-            arrayOf("apple", "Mama told me go and get it", "Google Pixel", "Nothing", "Honor", "Nokia")
-        val adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_dropdown_item,
-            content
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, TodoFragment())
+            .commit()
+        binding.tabLayout.addOnTabSelectedListener(
+            object : TabLayout.OnTabSelectedListener{
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    when(tab?.position) {
+                        0 -> {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.fragmentContainer, TodoFragment())
+                                .commit()
+                        }
+                        1 -> {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.fragmentContainer, ClickFragment())
+                                .commit()
+                        }
+                        2 -> {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.fragmentContainer, AppNameFragment())
+                                .commit()
+                        }
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
+
+            }
         )
-        binding.test.setAdapter(adapter)
     }
 }
