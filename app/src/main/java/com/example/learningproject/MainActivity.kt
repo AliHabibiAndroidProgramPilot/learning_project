@@ -21,18 +21,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val content: Array<String> = arrayOf("apple", "samsung", "Google Pixel", "Nothing", "Honor", "Nokia")
+        val content: Array<String> =
+            arrayOf("apple", "Mama told me go and get it", "Google Pixel", "Nothing", "Honor", "Nokia")
         val adapter = ArrayAdapter(
             this,
-            android.R.layout.simple_spinner_item,
+            android.R.layout.simple_spinner_dropdown_item,
             content
         )
-        binding.Spinner.adapter = adapter
-        binding.Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, index: Int, p3: Long) {
-                binding.textView.text = content[index]
-            }
-            override fun onNothingSelected(p0: AdapterView<*>?) {}
-        }
+        binding.test.setAdapter(adapter)
     }
 }
