@@ -9,14 +9,6 @@
         android:icon="@drawable/ic_home"
         android:id="@+id/item_2" />
     <item
-        android:title="@string/app_name"
-        android:icon="@drawable/ic_play"
-        android:id="@+id/item_3" />
-    <item
-        android:title="@string/play"
-        android:icon="@drawable/ic_play"
-        android:id="@+id/item_4" />
-    <item
         android:title="@string/todo"
         android:icon="@drawable/ic_back"
         android:id="@+id/item_5" />
