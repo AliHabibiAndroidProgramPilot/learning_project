@@ -2,7 +2,6 @@ package com.example.learningproject
 
 import android.app.Application
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,15 +14,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val items = arrayOf(
-            DataProduct(1, "shoes", "45$", R.drawable.gray),
-            DataProduct(2, "blanket", "12$", R.drawable.gray),
-            DataProduct(3, "jacket", "360$", R.drawable.gray)
+        val items: Array<String> = arrayOf("Apple" , "Iphone", "Google", "Pixel", "Samsung", "S24", "Microsoft", "Windows", "Linux", "Debian")
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            items
         )
-        val adapter = ListViewAdapter(this, items)
         binding.ListView.adapter = adapter
-        /*binding.ListView.setOnItemClickListener { _, _, index, _ ->
+        binding.ListView.setOnItemClickListener { _, _, index, _ ->
             Toast.makeText(this, items[index], Toast.LENGTH_SHORT).show()
-        }*/
+        }
     }
 }
