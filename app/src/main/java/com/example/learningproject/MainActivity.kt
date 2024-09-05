@@ -1,12 +1,10 @@
 package com.example.learningproject
 
-import android.app.Application
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.learningproject.databinding.ActivityMainBinding
-import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,15 +12,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val items: Array<String> = arrayOf("Apple" , "Iphone", "Google", "Pixel", "Samsung", "S24", "Microsoft", "Windows", "Linux", "Debian")
-        val adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            items
+        val data = listOf(
+            DataClass(1, "Video Game", "Lana Del Ray", R.drawable.gray),
+            DataClass(2, "Amen", "Drake", R.drawable.gray),
+            DataClass(3, "RedSky", "21 Savage", R.drawable.gray),
+            DataClass(4, "Sorrow", "Pink Floyd", R.drawable.gray),
+            DataClass(5, "Sorrow", "Pink Floyd", R.drawable.gray),
+            DataClass(6, "Disco", "Surface", R.drawable.gray),
+            DataClass(7, "Sinner Man", "Nina Simone", R.drawable.gray),
+            DataClass(8, "Comfortably Numb", "Pink Floyd", R.drawable.gray),
+            DataClass(9, "Blue Sky", "Pink Floyd", R.drawable.gray),
+            DataClass(10, "Rich Spirit", "Kendrick Lamar", R.drawable.gray),
+            DataClass(11, "Persian Rug", "PARTYNEXTDOOR", R.drawable.gray),
+            DataClass(12, "SunFlower", "Post Malone", R.drawable.gray),
+            DataClass(13, "Young Lust", "Pink Floyd", R.drawable.gray)
         )
-        binding.ListView.adapter = adapter
-        binding.ListView.setOnItemClickListener { _, _, index, _ ->
-            Toast.makeText(this, items[index], Toast.LENGTH_SHORT).show()
-        }
+        binding.RecyclerView.layoutManager =
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.RecyclerView.adapter = CustomAdapterRecyclerView(this, data)
     }
 }

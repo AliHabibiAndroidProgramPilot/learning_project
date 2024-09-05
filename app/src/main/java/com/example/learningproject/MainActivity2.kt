@@ -1,5 +1,6 @@
 package com.example.learningproject
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,5 +12,7 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.txtSongName.text = intent.getStringExtra("SongName")
+        binding.txtArtistName.text = intent.getStringExtra("ArtisName")
     }
 }
