@@ -2,6 +2,7 @@ package com.example.learningproject
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningproject.databinding.ActivityMainBinding
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             DataClass(13, "Young Lust", "Pink Floyd", R.drawable.gray)
         )
         binding.RecyclerView.layoutManager =
-            LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+            GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
         binding.RecyclerView.adapter = CustomAdapterRecyclerView(this, data)
     }
 }
