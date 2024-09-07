@@ -8,10 +8,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView"
-        android:clickable="true"
-        android:focusable="true"
+        android:orientation="horizontal"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

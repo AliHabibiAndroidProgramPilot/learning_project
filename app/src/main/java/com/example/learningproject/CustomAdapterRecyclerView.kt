@@ -16,7 +16,7 @@ class CustomAdapterRecyclerView(
         public fun setData(dataClass: DataClass) {
             binding.txtSongName.text = dataClass.songName
             binding.txtArtistName.text = dataClass.artistName
-            binding.btnListen.setOnClickListener {
+            binding.root.setOnClickListener {
                 contextActivity.startActivity(
                     Intent(contextActivity, MainActivity2::class.java)
                         .putExtra("SongName", dataClass.songName)
