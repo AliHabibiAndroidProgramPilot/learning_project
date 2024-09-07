@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             DataClass(13, "Young Lust", "Pink Floyd", R.drawable.gray)
         )
         binding.RecyclerView.layoutManager =
-            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+            LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         binding.RecyclerView.adapter = CustomAdapterRecyclerView(this, data)
     }
 }
