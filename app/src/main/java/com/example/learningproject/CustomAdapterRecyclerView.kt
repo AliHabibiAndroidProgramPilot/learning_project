@@ -8,12 +8,12 @@ import com.example.learningproject.databinding.ListItemBinding
 
 class CustomAdapterRecyclerView(
     private val contextActivity: Activity,
-    private val dataList: List<DataClass>
+    private val dataList: ArrayList<DataClass>
 ) : RecyclerView.Adapter<CustomAdapterRecyclerView.CustomViewHolder>() {
     inner class CustomViewHolder(
         private val binding: ListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        public fun setData(dataClass: DataClass) {
+        public fun setData(dataClass: DataClass, position: Int) {
             binding.txtSongName.text = dataClass.songName
             binding.txtArtistName.text = dataClass.artistName
             binding.root.setOnClickListener {
@@ -22,6 +22,11 @@ class CustomAdapterRecyclerView(
                         .putExtra("SongName", dataClass.songName)
                         .putExtra("ArtisName", dataClass.artistName)
                 )
+            }
+            binding.btnDelete.setOnClickListener {
+                dataList.removeAt(position)
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position, dataList.size)
             }
         }
     }
@@ -32,8 +37,16 @@ class CustomAdapterRecyclerView(
         )
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.setData(dataList[position])
+        holder.setData(dataList[position], position)
     }
 
     override fun getItemCount(): Int = dataList.size
+
+    public fun addItem(songName: String, artistNme: String) {
+        dataList.add(
+            DataClass(dataList.size, songName, artistNme, R.drawable.gray)
+        )
+        notifyItemInserted(dataList.lastIndex + 1)
+    }
+
 }

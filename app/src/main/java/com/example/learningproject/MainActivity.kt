@@ -2,7 +2,6 @@ package com.example.learningproject
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningproject.databinding.ActivityMainBinding
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val data = listOf(
+        val data = arrayListOf(
             DataClass(1, "Video Game", "Lana Del Ray", R.drawable.gray),
             DataClass(2, "Amen", "Drake", R.drawable.gray),
             DataClass(3, "RedSky", "21 Savage", R.drawable.gray),
@@ -28,8 +27,17 @@ class MainActivity : AppCompatActivity() {
             DataClass(12, "SunFlower", "Post Malone", R.drawable.gray),
             DataClass(13, "Young Lust", "Pink Floyd", R.drawable.gray)
         )
+        val adapter = CustomAdapterRecyclerView(this, data)
+        binding.RecyclerView.adapter = adapter
         binding.RecyclerView.layoutManager =
-            GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
-        binding.RecyclerView.adapter = CustomAdapterRecyclerView(this, data)
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.btnAdd.setOnClickListener {
+            adapter.addItem(
+                binding.edtSongName.text.toString(),
+                binding.edtArtistName.text.toString()
+            )
+            binding.edtSongName.text.clear()
+            binding.edtArtistName.text.clear()
+        }
     }
 }

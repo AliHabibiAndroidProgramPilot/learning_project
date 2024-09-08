@@ -1,8 +1,8 @@
 package com.example.learningproject
 
 data class DataClass(
-    val id: Short,
-    val songName: String,
-    val artistName: String,
-    val songCover: Int
+    var id: Int,
+    var songName: String,
+    var artistName: String,
+    var songCover: Int
 )
