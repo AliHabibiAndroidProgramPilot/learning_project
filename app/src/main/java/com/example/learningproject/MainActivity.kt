@@ -1,6 +1,8 @@
 package com.example.learningproject
 
 import android.os.Bundle
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,5 +41,16 @@ class MainActivity : AppCompatActivity() {
             binding.edtSongName.text.clear()
             binding.edtArtistName.text.clear()
         }
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(submitQuery: String?): Boolean {
+                Toast.makeText(this@MainActivity, submitQuery, Toast.LENGTH_LONG).show()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
     }
 }
