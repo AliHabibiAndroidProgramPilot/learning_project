@@ -1,6 +1,7 @@
 package com.example.learningproject
 
 import android.os.Bundle
+import android.view.Menu
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         val data = arrayListOf(
             DataClass(1, "Video Game", "Lana Del Ray", R.drawable.gray),
             DataClass(2, "Amen", "Drake", R.drawable.gray),
@@ -41,16 +43,21 @@ class MainActivity : AppCompatActivity() {
             binding.edtSongName.text.clear()
             binding.edtArtistName.text.clear()
         }
-        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_menu, menu)
+        val item = menu?.findItem(R.id.action_search)
+        val searchView: SearchView? = item?.actionView as SearchView?
+        searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(submitQuery: String?): Boolean {
-                Toast.makeText(this@MainActivity, submitQuery, Toast.LENGTH_LONG).show()
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
-
         })
+        return true
     }
 }
