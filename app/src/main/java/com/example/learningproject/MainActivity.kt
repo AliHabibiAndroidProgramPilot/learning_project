@@ -3,7 +3,6 @@ package com.example.learningproject
 import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,13 +10,14 @@ import com.example.learningproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: CustomAdapterRecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         val data = arrayListOf(
-            DataClass(1, "Video Game", "Lana Del Ray", R.drawable.gray),
+            DataClass(1, "Video Game","Lana Del Ray", R.drawable.gray),
             DataClass(2, "Amen", "Drake", R.drawable.gray),
             DataClass(3, "RedSky", "21 Savage", R.drawable.gray),
             DataClass(4, "Sorrow", "Pink Floyd", R.drawable.gray),
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             DataClass(12, "SunFlower", "Post Malone", R.drawable.gray),
             DataClass(13, "Young Lust", "Pink Floyd", R.drawable.gray)
         )
-        val adapter = CustomAdapterRecyclerView(this, data)
+        adapter = CustomAdapterRecyclerView(this, data)
         binding.RecyclerView.adapter = adapter
         binding.RecyclerView.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -51,10 +51,12 @@ class MainActivity : AppCompatActivity() {
         val searchView: SearchView? = item?.actionView as SearchView?
         searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(submitQuery: String?): Boolean {
+                adapter.filter.filter(submitQuery)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
                 return false
             }
         })
