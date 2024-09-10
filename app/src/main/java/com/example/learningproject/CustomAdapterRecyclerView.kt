@@ -16,9 +16,11 @@ class CustomAdapterRecyclerView(
     private val dataList: ArrayList<DataClass>
 ) : RecyclerView.Adapter<CustomAdapterRecyclerView.CustomViewHolder>(), Filterable {
     private val dataListFull = ArrayList<DataClass>()
+
     init {
         dataListFull.addAll(dataList)
     }
+
     inner class CustomViewHolder(
         private val binding: ListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -33,10 +35,9 @@ class CustomAdapterRecyclerView(
                 )
             }
             binding.btnDelete.setOnClickListener {
-                dataListFull.removeAt(position)
-                dataList.removeAt(position)
+                dataListFull.remove(dataClass)
+                dataList.remove(dataClass)
                 notifyItemRemoved(position)
-                notifyItemRangeChanged(position, dataListFull.size)
             }
         }
     }
@@ -63,17 +64,22 @@ class CustomAdapterRecyclerView(
     }
 
     override fun getFilter(): Filter =
-        object: Filter() {
+        object : Filter() {
             override fun performFiltering(searchQuery: CharSequence?): FilterResults {
                 val filterResults = ArrayList<DataClass>()
                 if (searchQuery == null || searchQuery.isEmpty()) {
                     filterResults.addAll(dataListFull)
                 } else {
                     val userSearchQuery = searchQuery.toString().trim()
-                    for (item in dataListFull) {
-                        if (item.songName.contains(userSearchQuery) || item.artistName.contains(userSearchQuery))
-                            filterResults.add(item)
-                    }
+                    filterResults.addAll(
+                        dataListFull.filter { item ->
+                            item.songName.contains(
+                                userSearchQuery,
+                                true
+                            ) || item.artistName.contains(
+                                userSearchQuery,
+                                true)
+                        })
                 }
                 val finalResult = FilterResults()
                 finalResult.values = filterResults

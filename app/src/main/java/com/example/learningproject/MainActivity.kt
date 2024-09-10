@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.search_menu, menu)
         val item = menu?.findItem(R.id.action_search)
         val searchView: SearchView? = item?.actionView as SearchView?
+
+
         searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(submitQuery: String?): Boolean {
                 adapter.filter.filter(submitQuery)
