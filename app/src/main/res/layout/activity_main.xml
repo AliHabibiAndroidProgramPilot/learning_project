@@ -9,57 +9,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_artistName" />
 
-    <EditText
-        android:id="@+id/edt_songName"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:hint="Song name"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_editor_absoluteX="197dp"
-        app:layout_editor_absoluteY="16dp" />
 
-    <EditText
-        android:id="@+id/edt_artistName"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Artist name"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_songName"
-        app:layout_editor_absoluteX="24dp"
-        app:layout_editor_absoluteY="79dp" />
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="Add"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_artistName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edt_songName"
-        app:layout_editor_absoluteX="289dp"
-        app:layout_editor_absoluteY="47dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
