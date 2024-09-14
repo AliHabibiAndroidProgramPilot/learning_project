@@ -17,11 +17,11 @@ class CustomAdapterRecyclerView(
 ) : RecyclerView.Adapter<CustomAdapterRecyclerView.CustomViewHolder>(), Filterable {
     private val dataListFull = ArrayList<DataClass>(dataList)
 
-//    fun swipeRemove(position: Int) {
-//        dataListFull.removeAt(position)
-//        dataListFull.removeAt(position)
-//        notifyItemRemoved(position)
-//    }
+    fun swipeRemove(position: Int) {
+        dataListFull.removeAt(position)
+        dataList.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
     fun moveItem(fromPosition: Int, toPosition: Int) {
         val movedItem = dataListFull[fromPosition]
