@@ -15,16 +15,27 @@ class CustomAdapterRecyclerView(
     private val contextActivity: Activity,
     private val dataList: ArrayList<DataClass>
 ) : RecyclerView.Adapter<CustomAdapterRecyclerView.CustomViewHolder>(), Filterable {
-    private val dataListFull = ArrayList<DataClass>()
+    private val dataListFull = ArrayList<DataClass>(dataList)
 
-    init {
-        dataListFull.addAll(dataList)
+//    fun swipeRemove(position: Int) {
+//        dataListFull.removeAt(position)
+//        dataListFull.removeAt(position)
+//        notifyItemRemoved(position)
+//    }
+
+    fun moveItem(fromPosition: Int, toPosition: Int) {
+        val movedItem = dataListFull[fromPosition]
+        dataListFull.removeAt(fromPosition)
+        dataListFull.add(toPosition, movedItem)
+        dataList.removeAt(fromPosition)
+        dataList.add(toPosition, movedItem)
+        notifyItemMoved(fromPosition, toPosition)
     }
 
     inner class CustomViewHolder(
         private val binding: ListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        public fun setData(dataClass: DataClass, position: Int) {
+        fun setData(dataClass: DataClass) {
             binding.txtSongName.text = dataClass.songName
             binding.txtArtistName.text = dataClass.artistName
             binding.root.setOnClickListener {
@@ -33,11 +44,6 @@ class CustomAdapterRecyclerView(
                         .putExtra("SongName", dataClass.songName)
                         .putExtra("ArtisName", dataClass.artistName)
                 )
-            }
-            binding.btnDelete.setOnClickListener {
-                dataListFull.remove(dataClass)
-                dataList.remove(dataClass)
-                notifyItemRemoved(position)
             }
         }
     }
@@ -48,19 +54,19 @@ class CustomAdapterRecyclerView(
         )
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.setData(dataList[position], position)
+        holder.setData(dataList[position])
     }
 
     override fun getItemCount(): Int = dataList.size
 
-    public fun addItem(songName: String, artistNme: String) {
+    fun addItem(songName: String, artistNme: String) {
         dataList.add(
             DataClass(dataList.size, songName, artistNme, R.drawable.gray)
         )
         dataListFull.add(
             DataClass(dataList.size, songName, artistNme, R.drawable.gray)
         )
-        notifyItemInserted(dataList.lastIndex + 1)
+        notifyItemInserted(dataListFull.lastIndex + 1)
     }
 
     override fun getFilter(): Filter =
@@ -78,7 +84,8 @@ class CustomAdapterRecyclerView(
                                 true
                             ) || item.artistName.contains(
                                 userSearchQuery,
-                                true)
+                                true
+                            )
                         })
                 }
                 val finalResult = FilterResults()
