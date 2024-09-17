@@ -22,7 +22,6 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         const val TEACHER_NAME = "Name"
         const val TEACHER_FAMILY = "Family"
         const val TEACHER_NATIONAL_CODE = "National_Code"
-        const val TEACHER_AGE = "Age"
     }
 
     override fun onCreate(dataBase: SQLiteDatabase?) {
@@ -30,8 +29,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
                 "$TEACHER_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$TEACHER_NAME VARCHAR(50)," +
                 "$TEACHER_FAMILY VARCHAR(75)," +
-                "$TEACHER_NATIONAL_CODE VARCHAR(10)," +
-                "$TEACHER_AGE INTEGER)")
+                "$TEACHER_NATIONAL_CODE VARCHAR(10))")
 
         dataBase?.execSQL("CREATE TABLE IF NOT EXISTS $STUDENT_TABLE (" +
                 "$STUDENT_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -43,6 +41,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
     }
 
     override fun onUpgrade(dataBase: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        //Matters which Table Must Be Delete First
         dataBase?.execSQL("DROP TABLE IF EXISTS $STUDENT_TABLE")
         dataBase?.execSQL("DROP TABLE IF EXISTS $TEACHER_TABLE")
         onCreate(dataBase)
