@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val teachersList = arrayOf(
+        val dataBase = DataBaseHelper(this)
+        /*val teachersList = arrayOf(
             TeacherDataModel(1, "Ali", "Nori", "0123456789"),
             TeacherDataModel(2, "Ali", "Nori", "0123456789"),
             TeacherDataModel(3, "Ali", "Nori", "0123456789"),
@@ -32,11 +33,10 @@ class MainActivity : AppCompatActivity() {
             StudentDataModel(1, "Ali", "Habibi", 5, 19),
             StudentDataModel(1, "Ali", "Habibi", 5, 80)
         )
-        val dataBase = DataBaseHelper(this)
         //Matters That Which Table Initialized First
-        for (item in teachersList)
-            TeacherDAO(dataBase).insertTeacher(item)
-        for (item in studentsList)
-            StudentDAO(dataBase).insertStudent(item)
+          for (item in teachersList)
+              TeacherDAO(dataBase).insertTeacher(item)
+          for (item in studentsList)
+              StudentDAO(dataBase).insertStudent(item)*/
     }
 }
