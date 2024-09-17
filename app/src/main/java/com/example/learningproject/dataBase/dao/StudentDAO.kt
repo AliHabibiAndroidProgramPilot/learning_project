@@ -19,4 +19,23 @@ class StudentDAO(
         writeDataBase.close()
         return insertDataResult > 0
     }
+    fun findAll(): ArrayList<StudentDataModel> {
+        val readDataBase = accessDataBase.readableDatabase
+        val sqlQuery = "SELECT * FROM ${DataBaseHelper.STUDENT_TABLE}"
+        val cursor = readDataBase.rawQuery(sqlQuery, null)
+        val list = ArrayList<StudentDataModel>()
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(0)
+                val studentName = cursor.getString(1)
+                val studentFamily = cursor.getString(2)
+                val studentTeacherId = cursor.getInt(3)
+                val studentAge = cursor.getInt(4)
+                list.add(StudentDataModel(id, studentName, studentFamily, studentTeacherId, studentAge))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        readDataBase.close()
+        return list
+    }
 }
