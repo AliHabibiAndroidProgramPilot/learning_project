@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import com.example.learningproject.dataBase.DataBaseHelper
 import com.example.learningproject.dataBase.dataModel.StudentDataModel
+import com.example.learningproject.dataBase.dataModel.TeacherDataModel
 
 class StudentDAO(
     private val accessDataBase: DataBaseHelper
@@ -29,18 +30,35 @@ class StudentDAO(
         readDataBase.close()
         return list
     }
+    fun selectByColumn(columnName: String, columnValue: String): ArrayList<StudentDataModel> {
+        val readDatabase = accessDataBase.readableDatabase
+        val sqlQuery = "SELECT * FROM ${DataBaseHelper.STUDENT_TABLE} WHERE $columnName = ?"
+        val cursor =
+            readDatabase.rawQuery(sqlQuery, arrayOf(columnValue))
+        getData(cursor)
+        readDatabase.close()
+        cursor.close()
+        return list
+    }
     private fun getData(cursor: Cursor) {
         list.clear()
         if (cursor.moveToFirst()) {
             do {
-                val studentId = cursor.getInt(0)
-                val studentName = cursor.getString(1)
-                val studentFamily = cursor.getString(2)
-                val studentTeacherId = cursor.getInt(3)
-                val studentAge = cursor.getInt(4)
-                list.add(StudentDataModel(studentId, studentName, studentFamily, studentTeacherId, studentAge))
+                val id: Int = cursor.getInt(0)
+                val studentName: String = cursor.getString(1)
+                val studentFamily: String = cursor.getString(2)
+                val studentTeacherId: Int = cursor.getInt(3)
+                val studentAge: Int = cursor.getInt(4)
+                list.add(
+                    StudentDataModel(
+                        id,
+                        studentName,
+                        studentFamily,
+                        studentTeacherId,
+                        studentAge
+                    )
+                )
             } while (cursor.moveToNext())
         }
-        cursor.close()
     }
 }
