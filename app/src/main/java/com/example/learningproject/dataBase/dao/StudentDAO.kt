@@ -2,6 +2,7 @@ package com.example.learningproject.dataBase.dao
 
 import android.content.ContentValues
 import android.database.Cursor
+import android.database.sqlite.SQLiteException
 import android.util.Log
 import com.example.learningproject.dataBase.DataBaseHelper
 import com.example.learningproject.dataBase.dataModel.StudentDataModel
@@ -51,6 +52,15 @@ class StudentDAO(
         )
         writDataBase.close()
         return deleteResult > 0
+    }
+    fun deleteAll() {
+        try {
+            val writeDataBase = accessDataBase.writableDatabase
+            writeDataBase.execSQL("DELETE FROM ${DataBaseHelper.TEACHER_TABLE}")
+            writeDataBase.close()
+        } catch (e: SQLiteException) {
+            Log.i("SQLiteException", "Table Not Found")
+        }
     }
     private fun getData() {
         list.clear()
