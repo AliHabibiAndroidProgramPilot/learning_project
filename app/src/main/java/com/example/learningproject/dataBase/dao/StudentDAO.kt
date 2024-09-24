@@ -2,6 +2,7 @@ package com.example.learningproject.dataBase.dao
 
 import android.content.ContentValues
 import android.database.Cursor
+import android.util.Log
 import com.example.learningproject.dataBase.DataBaseHelper
 import com.example.learningproject.dataBase.dataModel.StudentDataModel
 import com.example.learningproject.dataBase.dataModel.TeacherDataModel
@@ -43,23 +44,32 @@ class StudentDAO(
     }
     private fun getData() {
         list.clear()
-        if (cursor.moveToFirst()) {
-            do {
-                val id: Int = cursor.getInt(0)
-                val studentName: String = cursor.getString(1)
-                val studentFamily: String = cursor.getString(2)
-                val studentTeacherId: Int = cursor.getInt(3)
-                val studentAge: Int = cursor.getInt(4)
-                list.add(
-                    StudentDataModel(
-                        id,
-                        studentName,
-                        studentFamily,
-                        studentTeacherId,
-                        studentAge
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    val id: Int =
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseHelper.STUDENT_ID))
+                    val studentName: String =
+                        cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.STUDENT_NAME))
+                    val studentFamily: String =
+                        cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.STUDENT_FAMILY))
+                    val studentTeacherId: Int =
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseHelper.STUDENT_TEACHER_ID))
+                    val studentAge: Int =
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseHelper.STUDENT_AGE))
+                    list.add(
+                        StudentDataModel(
+                            id,
+                            studentName,
+                            studentFamily,
+                            studentTeacherId,
+                            studentAge
+                        )
                     )
-                )
-            } while (cursor.moveToNext())
+                } while (cursor.moveToNext())
+            }
+        } catch (e: IllegalArgumentException) {
+            Log.e("ILLEGAL_ARGUMENT_EXCEPTION", e.message.toString())
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.learningproject.dataBase.dao
 
 import android.content.ContentValues
 import android.database.Cursor
+import android.util.Log
 import com.example.learningproject.dataBase.DataBaseHelper
 import com.example.learningproject.dataBase.dataModel.TeacherDataModel
 
@@ -45,21 +46,29 @@ class TeacherDAO(
 
     private fun getData() {
         data.clear()
-        if (cursor.moveToFirst()) {
-            do {
-                val id: Int = cursor.getInt(0)
-                val teacherName: String = cursor.getString(1)
-                val teacherFamily: String = cursor.getString(2)
-                val teacherNationalCode: String = cursor.getString(3)
-                data.add(
-                    TeacherDataModel(
-                        id,
-                        teacherName,
-                        teacherFamily,
-                        teacherNationalCode
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    val id: Int =
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseHelper.TEACHER_ID))
+                    val teacherName: String =
+                        cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.TEACHER_NAME))
+                    val teacherFamily: String =
+                        cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.TEACHER_FAMILY))
+                    val teacherNationalCode: String =
+                        cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.TEACHER_NATIONAL_CODE))
+                    data.add(
+                        TeacherDataModel(
+                            id,
+                            teacherName,
+                            teacherFamily,
+                            teacherNationalCode
+                        )
                     )
-                )
-            } while (cursor.moveToNext())
+                } while (cursor.moveToNext())
+            }
+        } catch (e: IllegalArgumentException) {
+            Log.e("ILLEGAL_ARGUMENT_EXCEPTION", e.message.toString())
         }
     }
 }
