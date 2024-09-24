@@ -22,7 +22,6 @@ class TeacherDAO(
         writeDatabase.close()
         return insertResult > 0
     }
-
     fun selectAll(): ArrayList<TeacherDataModel> {
         val readDataBase = accessDataBase.readableDatabase
         cursor =
@@ -32,7 +31,6 @@ class TeacherDAO(
         readDataBase.close()
         return data
     }
-
     fun selectByColumn(columnName: String, columnValue: String): ArrayList<TeacherDataModel> {
         val readDatabase = accessDataBase.readableDatabase
         val sqlQuery = "SELECT * FROM ${DataBaseHelper.TEACHER_TABLE} WHERE $columnName = ?"
@@ -43,7 +41,16 @@ class TeacherDAO(
         readDatabase.close()
         return data
     }
-
+    fun deleteById(teacherId: String): Boolean {
+        val writeDataBase = accessDataBase.writableDatabase
+        val deleteResult = writeDataBase.delete(
+            DataBaseHelper.TEACHER_TABLE,
+            "${DataBaseHelper.TEACHER_ID} = ?",
+            arrayOf(teacherId)
+        )
+        writeDataBase.close()
+        return deleteResult > 0
+    }
     private fun getData() {
         data.clear()
         try {

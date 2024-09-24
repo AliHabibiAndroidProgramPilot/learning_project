@@ -42,6 +42,16 @@ class StudentDAO(
         cursor.close()
         return list
     }
+    fun deleteById(studentId: String): Boolean {
+        val writDataBase = accessDataBase.writableDatabase
+        val deleteResult = writDataBase.delete(
+            DataBaseHelper.STUDENT_TABLE,
+            "${DataBaseHelper.STUDENT_ID} = ?",
+            arrayOf(studentId)
+        )
+        writDataBase.close()
+        return deleteResult > 0
+    }
     private fun getData() {
         list.clear()
         try {

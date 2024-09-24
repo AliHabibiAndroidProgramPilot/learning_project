@@ -2,6 +2,7 @@ package com.example.learningproject
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learningproject.dataBase.DataBaseHelper
 import com.example.learningproject.dataBase.dao.StudentDAO
@@ -32,11 +33,6 @@ class MainActivity : AppCompatActivity() {
             StudentDataModel(1, "Ali", "Habibi", 4, 20),
             StudentDataModel(1, "Ali", "Habibi", 5, 19),
             StudentDataModel(1, "Ali", "Habibi", 5, 80)
-        )
-        //Matters That Which Table Initialized First
-          for (item in teachersList)
-              TeacherDAO(dataBase).insertTeacher(item)
-          for (item in studentsList)
-              StudentDAO(dataBase).insertStudent(item)*/
+        )*/
     }
 }
