@@ -9,7 +9,7 @@ class TeacherDAO(
     private val accessDataBase: DataBaseHelper
 ) {
     private val data = ArrayList<TeacherDataModel>()
-
+    private lateinit var cursor: Cursor
     fun insertTeacher(teacher: TeacherDataModel): Boolean {
         val writeDatabase = accessDataBase.writableDatabase
         val contentValues = ContentValues()
@@ -24,9 +24,9 @@ class TeacherDAO(
 
     fun selectAll(): ArrayList<TeacherDataModel> {
         val readDataBase = accessDataBase.readableDatabase
-        val cursor =
+        cursor =
             readDataBase.rawQuery("SELECT * FROM ${DataBaseHelper.TEACHER_TABLE}", null)
-        getData(cursor)
+        getData()
         cursor.close()
         readDataBase.close()
         return data
@@ -35,15 +35,15 @@ class TeacherDAO(
     fun selectByColumn(columnName: String, columnValue: String): ArrayList<TeacherDataModel> {
         val readDatabase = accessDataBase.readableDatabase
         val sqlQuery = "SELECT * FROM ${DataBaseHelper.TEACHER_TABLE} WHERE $columnName = ?"
-        val cursor =
+        cursor =
             readDatabase.rawQuery(sqlQuery, arrayOf(columnValue))
-        getData(cursor)
+        getData()
         cursor.close()
         readDatabase.close()
         return data
     }
 
-    private fun getData(cursor: Cursor) {
+    private fun getData() {
         data.clear()
         if (cursor.moveToFirst()) {
             do {
