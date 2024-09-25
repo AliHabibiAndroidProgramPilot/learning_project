@@ -13,9 +13,9 @@ class StudentDAO(
 ) {
     private val list = ArrayList<StudentDataModel>()
     private lateinit var cursor: Cursor
+    private val contentValues = ContentValues()
     fun insertStudent(student: StudentDataModel): Boolean {
         val writeDataBase = accessDataBase.writableDatabase
-        val contentValues = ContentValues()
         contentValues.put(DataBaseHelper.STUDENT_NAME, student.studentName)
         contentValues.put(DataBaseHelper.STUDENT_FAMILY, student.studentFamily)
         contentValues.put(DataBaseHelper.STUDENT_TEACHER_ID, student.studentTeacherId)
@@ -53,13 +53,15 @@ class StudentDAO(
         writDataBase.close()
         return deleteResult > 0
     }
-    fun deleteAll() {
+    fun deleteAll(): Boolean {
         try {
             val writeDataBase = accessDataBase.writableDatabase
             writeDataBase.execSQL("DELETE FROM ${DataBaseHelper.TEACHER_TABLE}")
             writeDataBase.close()
+            return true
         } catch (e: SQLiteException) {
             Log.i("SQLiteException", "Table Not Found")
+            return false
         }
     }
     private fun getData() {
