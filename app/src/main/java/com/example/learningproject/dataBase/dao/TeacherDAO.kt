@@ -13,15 +13,26 @@ class TeacherDAO(
     private val data = ArrayList<TeacherDataModel>()
     private lateinit var cursor: Cursor
     private val contentValues = ContentValues()
-    fun insertTeacher(teacher: TeacherDataModel): Boolean {
+    fun insert(teacher: TeacherDataModel): Boolean {
         val writeDatabase = accessDataBase.writableDatabase
-        contentValues.put(DataBaseHelper.TEACHER_NAME, teacher.teacherName)
-        contentValues.put(DataBaseHelper.TEACHER_FAMILY, teacher.teacherFamily)
-        contentValues.put(DataBaseHelper.TEACHER_NATIONAL_CODE, teacher.teacherNationalCode)
+        setContentValues(teacher)
         val insertResult =
             writeDatabase.insert(DataBaseHelper.TEACHER_TABLE, null, contentValues)
         writeDatabase.close()
         return insertResult > 0
+    }
+    fun update(teacherId: String, teacher: TeacherDataModel): Boolean {
+        val writeDataBase = accessDataBase.writableDatabase
+        setContentValues(teacher)
+        val updateResult =
+            writeDataBase.update(
+                DataBaseHelper.TEACHER_TABLE,
+                contentValues,
+                "${DataBaseHelper.TEACHER_ID} = ?",
+                arrayOf(teacherId)
+            )
+        writeDataBase.close()
+        return updateResult > 0
     }
     fun selectAll(): ArrayList<TeacherDataModel> {
         val readDataBase = accessDataBase.readableDatabase
@@ -89,5 +100,11 @@ class TeacherDAO(
         } catch (e: IllegalArgumentException) {
             Log.e("ILLEGAL_ARGUMENT_EXCEPTION", e.message.toString())
         }
+    }
+    private fun setContentValues(teacher: TeacherDataModel) {
+        contentValues.clear()
+        contentValues.put(DataBaseHelper.TEACHER_NAME, teacher.teacherName)
+        contentValues.put(DataBaseHelper.TEACHER_FAMILY, teacher.teacherFamily)
+        contentValues.put(DataBaseHelper.TEACHER_NATIONAL_CODE, teacher.teacherNationalCode)
     }
 }

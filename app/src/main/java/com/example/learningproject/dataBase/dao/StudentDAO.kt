@@ -14,16 +14,25 @@ class StudentDAO(
     private val list = ArrayList<StudentDataModel>()
     private lateinit var cursor: Cursor
     private val contentValues = ContentValues()
-    fun insertStudent(student: StudentDataModel): Boolean {
+    fun insert(student: StudentDataModel): Boolean {
         val writeDataBase = accessDataBase.writableDatabase
-        contentValues.put(DataBaseHelper.STUDENT_NAME, student.studentName)
-        contentValues.put(DataBaseHelper.STUDENT_FAMILY, student.studentFamily)
-        contentValues.put(DataBaseHelper.STUDENT_TEACHER_ID, student.studentTeacherId)
-        contentValues.put(DataBaseHelper.STUDENT_AGE, student.studentAge)
+        setContentValues(student)
         val insertDataResult =
             writeDataBase.insert(DataBaseHelper.STUDENT_TABLE, null, contentValues)
         writeDataBase.close()
         return insertDataResult > 0
+    }
+    fun update(studentId: String, student: StudentDataModel): Boolean {
+        val writeDatabase = accessDataBase.writableDatabase
+        setContentValues(student)
+        val updateResult = writeDatabase.update(
+            DataBaseHelper.STUDENT_TABLE,
+            contentValues,
+            "${DataBaseHelper.STUDENT_ID} = ?",
+            arrayOf(studentId)
+        )
+        writeDatabase.close()
+        return updateResult > 0
     }
     fun selectAll(): ArrayList<StudentDataModel> {
         val readDataBase = accessDataBase.readableDatabase
@@ -54,14 +63,14 @@ class StudentDAO(
         return deleteResult > 0
     }
     fun deleteAll(): Boolean {
-        try {
+        return try {
             val writeDataBase = accessDataBase.writableDatabase
             writeDataBase.execSQL("DELETE FROM ${DataBaseHelper.TEACHER_TABLE}")
             writeDataBase.close()
-            return true
+            true
         } catch (e: SQLiteException) {
             Log.i("SQLiteException", "Table Not Found")
-            return false
+            false
         }
     }
     private fun getData() {
@@ -93,5 +102,12 @@ class StudentDAO(
         } catch (e: IllegalArgumentException) {
             Log.e("ILLEGAL_ARGUMENT_EXCEPTION", e.message.toString())
         }
+    }
+    private fun setContentValues(student: StudentDataModel) {
+        contentValues.clear()
+        contentValues.put(DataBaseHelper.STUDENT_NAME, student.studentName)
+        contentValues.put(DataBaseHelper.STUDENT_FAMILY, student.studentFamily)
+        contentValues.put(DataBaseHelper.STUDENT_TEACHER_ID, student.studentTeacherId)
+        contentValues.put(DataBaseHelper.STUDENT_AGE, student.studentAge)
     }
 }
