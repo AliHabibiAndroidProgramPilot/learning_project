@@ -4,5 +4,6 @@ data class TeacherDataModel(
     var teacherId: Int,
     var teacherName: String,
     var teacherFamily: String,
-    var teacherNationalCode: String
+    var teacherNationalCode: String,
+    var teacherAge: Int
 )

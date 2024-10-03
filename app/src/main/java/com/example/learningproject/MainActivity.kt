@@ -18,21 +18,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val dataBase = DataBaseHelper(this)
-        /*val teachersList = arrayOf(
-            TeacherDataModel(1, "Ali", "Nori", "0123456789"),
-            TeacherDataModel(2, "Ali", "Nori", "0123456789"),
-            TeacherDataModel(3, "Ali", "Nori", "0123456789"),
-            TeacherDataModel(4, "Ali", "Nori", "0123456789"),
-            TeacherDataModel(5, "Ali", "Nori", "test"),
-            TeacherDataModel(5, "Ali", "Nori", "888")
-        )
-        val studentsList = arrayOf(
-            StudentDataModel(1, "Ali", "Habibi", 1, 18),
-            StudentDataModel(1, "Ali", "Habibi", 2, 19),
-            StudentDataModel(1, "Ali", "Habibi", 3, 22),
-            StudentDataModel(1, "Ali", "Habibi", 4, 20),
-            StudentDataModel(1, "Ali", "Habibi", 5, 19),
-            StudentDataModel(1, "Ali", "Habibi", 5, 80)
-        )*/
+        binding.btn.setOnClickListener {
+
+        }
     }
 }

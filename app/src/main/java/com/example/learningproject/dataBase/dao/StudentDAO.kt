@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteException
 import android.util.Log
 import com.example.learningproject.dataBase.DataBaseHelper
 import com.example.learningproject.dataBase.dataModel.StudentDataModel
-import com.example.learningproject.dataBase.dataModel.TeacherDataModel
 
 class StudentDAO(
     private val accessDataBase: DataBaseHelper

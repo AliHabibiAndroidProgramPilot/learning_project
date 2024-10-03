@@ -87,12 +87,15 @@ class TeacherDAO(
                         cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.TEACHER_FAMILY))
                     val teacherNationalCode: String =
                         cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.TEACHER_NATIONAL_CODE))
+                    val teacherAge =
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseHelper.TEACHER_AGE))
                     data.add(
                         TeacherDataModel(
                             id,
                             teacherName,
                             teacherFamily,
-                            teacherNationalCode
+                            teacherNationalCode,
+                            teacherAge
                         )
                     )
                 } while (cursor.moveToNext())
@@ -106,5 +109,6 @@ class TeacherDAO(
         contentValues.put(DataBaseHelper.TEACHER_NAME, teacher.teacherName)
         contentValues.put(DataBaseHelper.TEACHER_FAMILY, teacher.teacherFamily)
         contentValues.put(DataBaseHelper.TEACHER_NATIONAL_CODE, teacher.teacherNationalCode)
+        contentValues.put(DataBaseHelper.TEACHER_AGE, teacher.teacherAge)
     }
 }
