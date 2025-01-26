@@ -19,14 +19,12 @@ class ApiRepository private constructor() {
             }
     }
 
-    fun sendText(to: String, text: String) {
+    fun sendText(to: String, text: String, apiRespond: ApiRespond) {
         RetrofitService.apiService.sendText(to = to, text = text).enqueue(
             object : Callback<MainModel> {
                 override fun onResponse(call: Call<MainModel>, response: Response<MainModel>) {
-                    if (response.isSuccessful) {
-                        val result = response.body() as MainModel
-                        Log.i("TEST", result.message)
-                    }
+                    if (response.isSuccessful)
+                        apiRespond.onRespond(response.body() as MainModel)
                 }
 
                 override fun onFailure(call: Call<MainModel>, t: Throwable) {

@@ -20,4 +20,16 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtApiRespond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="@id/btn"
+        app:layout_constraintStart_toStartOf="@+id/btn"
+        app:layout_constraintTop_toBottomOf="@id/btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
