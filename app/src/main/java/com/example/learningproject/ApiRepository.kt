@@ -1,5 +1,6 @@
 package com.example.learningproject
 
+import com.example.learningproject.model.MainModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,15 +18,15 @@ class ApiRepository private constructor() {
             }
     }
 
-    fun sendText(token: String, text: String) {
-        RetrofitService.apiService.sendText(token = token, text = text).enqueue(
-            object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    TODO("Not yet implemented")
+    fun sendText(to: String, text: String) {
+        RetrofitService.apiService.sendText(to = to, text = text).enqueue(
+            object : Callback<MainModel> {
+                override fun onResponse(call: Call<MainModel>, response: Response<MainModel>) {
+
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
-                    TODO("Not yet implemented")
+                override fun onFailure(call: Call<MainModel>, t: Throwable) {
+
                 }
 
             }
