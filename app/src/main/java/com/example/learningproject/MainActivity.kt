@@ -10,5 +10,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.btn.setOnClickListener {
+            ApiRepository.instance.sendText(
+                "bYc92CJsQu6utThQ1ZBwwqhTsXh6BTkkzmMn2APv",
+                "Hello From Android Studio"
+            )
+        }
     }
 }

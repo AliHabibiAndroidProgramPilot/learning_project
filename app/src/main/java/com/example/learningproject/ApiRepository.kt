@@ -1,5 +1,6 @@
 package com.example.learningproject
 
+import android.util.Log
 import com.example.learningproject.model.MainModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +23,10 @@ class ApiRepository private constructor() {
         RetrofitService.apiService.sendText(to = to, text = text).enqueue(
             object : Callback<MainModel> {
                 override fun onResponse(call: Call<MainModel>, response: Response<MainModel>) {
-
+                    if (response.isSuccessful) {
+                        val result = response.body() as MainModel
+                        Log.i("TEST", result.message)
+                    }
                 }
 
                 override fun onFailure(call: Call<MainModel>, t: Throwable) {
