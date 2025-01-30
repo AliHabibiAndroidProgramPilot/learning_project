@@ -1,11 +1,9 @@
 package com.example.learningproject
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learningproject.databinding.ActivityMainBinding
-import com.example.learningproject.model.MainModel
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -13,5 +11,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val imageUrl = "https://m.media-amazon.com/images/M/MV5BNzIzMjBiNDUtOWQ1ZC00ZDY1LWJkZmQtN2E3ZTRiMWQzZDU1XkEyXkFqcGc@._V1_.jpg"
+        Picasso.get()
+            .load(imageUrl)
+            .placeholder(R.drawable.gray)
+            .error(R.drawable.ic_launcher_background)
+            .into(binding.imageView)
     }
 }
