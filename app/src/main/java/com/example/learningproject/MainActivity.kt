@@ -1,12 +1,11 @@
 package com.example.learningproject
 
 import android.os.Bundle
-import android.os.Handler
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.postDelayed
 import com.example.learningproject.databinding.ActivityMainBinding
 import com.example.learningproject.model.MainModel
-import kotlinx.coroutines.coroutineScope
 
 class MainActivity : AppCompatActivity(), ApiRespond {
     private lateinit var binding: ActivityMainBinding
@@ -15,9 +14,11 @@ class MainActivity : AppCompatActivity(), ApiRespond {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btn.setOnClickListener {
+            it.isEnabled = false
+            binding.progressBar.visibility = View.VISIBLE
             ApiRepository.instance.sendText(
                 "bYc92CJsQu6utThQ1ZBwwqhTsXh6BTkkzmMn2APv",
-                "This Time It's built by mySelf",
+                "No Limit I'm Fucking Solider",
                 this
             )
         }
@@ -25,13 +26,19 @@ class MainActivity : AppCompatActivity(), ApiRespond {
 
     override fun onRespond(respond: MainModel) {
         binding.txtApiRespond.text = respond.message
+        binding.progressBar.visibility = View.INVISIBLE
+        binding.btn.isEnabled = true
     }
 
     override fun onNotRespond(respond: String) {
-        TODO("Not yet implemented")
+
     }
 
-    override fun onRespondFailure(error: String) {
-        TODO("Not yet implemented")
+    override fun onRespondFailure(error: String?) {
+        if (error != null) {
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.btn.isEnabled = true
+        }
     }
 }

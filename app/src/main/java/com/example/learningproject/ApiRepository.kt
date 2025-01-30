@@ -1,6 +1,5 @@
 package com.example.learningproject
 
-import android.util.Log
 import com.example.learningproject.model.MainModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,10 +24,12 @@ class ApiRepository private constructor() {
                 override fun onResponse(call: Call<MainModel>, response: Response<MainModel>) {
                     if (response.isSuccessful)
                         apiRespond.onRespond(response.body() as MainModel)
+                    else if (!response.isSuccessful)
+                        apiRespond.onNotRespond("Not Responding")
                 }
 
                 override fun onFailure(call: Call<MainModel>, t: Throwable) {
-
+                    apiRespond.onRespondFailure(t.message)
                 }
 
             }
