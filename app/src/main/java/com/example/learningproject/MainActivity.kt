@@ -2,14 +2,14 @@ package com.example.learningproject
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.learningproject.databinding.ActivityMainBinding
-import com.squareup.picasso.Picasso
+import com.example.learningproject.view.ViewMainActivity
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView()
+        val view = ViewMainActivity(this)
+        setContentView(view.binding.root)
     }
 
 }
