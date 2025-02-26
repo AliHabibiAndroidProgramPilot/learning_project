@@ -1,6 +1,7 @@
 package com.example.learningproject.ext
 
 interface BaseLifecycle {
+
     fun onCreate()
 
     fun onStart() {}
@@ -14,4 +15,5 @@ interface BaseLifecycle {
     fun onRestart() {}
 
     fun onDestroy() {}
+
 }

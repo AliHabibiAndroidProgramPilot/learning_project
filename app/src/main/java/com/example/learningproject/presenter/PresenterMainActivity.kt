@@ -11,6 +11,7 @@ class PresenterMainActivity(
 
     override fun onCreate() {
         initializeData()
+        btnFinished()
     }
 
     override fun onResume() {
@@ -26,6 +27,10 @@ class PresenterMainActivity(
     private fun showToast() {
         val toastText = model.getToastText()
         view.showToast(toastText)
+    }
+
+    private fun btnFinished() {
+        view.onFinishButton()
     }
 
 }

@@ -6,14 +6,22 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.example.learningproject.databinding.ActivityMainBinding
+import com.example.learningproject.ext.ActivityUtils
 
-class ViewMainActivity(contextInstance: Context) : FrameLayout(contextInstance) {
+class ViewMainActivity(
+    contextInstance: Context,
+    private val utility: ActivityUtils
+) : FrameLayout(contextInstance) {
     // Initialize View Binding
     val binding: ActivityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(context))
 
     fun setMainText(name: String) {
         binding.txtMain.textAlignment = View.TEXT_ALIGNMENT_CENTER
         binding.txtMain.text = name
+    }
+
+    fun onFinishButton() {
+        binding.btnFinish.setOnClickListener { utility.finished() }
     }
 
     fun showToast(toastText: CharSequence) {
