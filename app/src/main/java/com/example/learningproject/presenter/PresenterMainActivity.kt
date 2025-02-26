@@ -1,16 +1,21 @@
 package com.example.learningproject.presenter
 
-import com.example.learningproject.ext.ActivityLifecycle
+import com.example.learningproject.ext.BaseLifecycle
 import com.example.learningproject.model.ModelMainActivity
 import com.example.learningproject.view.ViewMainActivity
 
 class PresenterMainActivity(
     private val view: ViewMainActivity,
     private val model: ModelMainActivity
-) : ActivityLifecycle {
+) : BaseLifecycle {
 
     override fun onCreate() {
         initializeData()
+    }
+
+    override fun onResume() {
+        showToast()
+        super.onResume()
     }
 
     private fun initializeData() {
@@ -18,12 +23,9 @@ class PresenterMainActivity(
         view.setMainText(text)
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
+    private fun showToast() {
+        val toastText = model.getToastText()
+        view.showToast(toastText)
     }
 
 }

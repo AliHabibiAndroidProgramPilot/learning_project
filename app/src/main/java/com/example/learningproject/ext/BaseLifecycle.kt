@@ -1,6 +1,6 @@
 package com.example.learningproject.ext
 
-interface ActivityLifecycle {
+interface BaseLifecycle {
     fun onCreate()
 
     fun onStart() {}
