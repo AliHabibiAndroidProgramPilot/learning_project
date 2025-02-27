@@ -8,10 +8,15 @@ import android.widget.Toast
 import com.example.learningproject.databinding.ActivityMainBinding
 import com.example.learningproject.ext.ActivityUtils
 
-class ViewMainActivity(
-    contextInstance: Context,
-    private val utility: ActivityUtils
-) : FrameLayout(contextInstance) {
+class ViewMainActivity : FrameLayout {
+
+    private lateinit var utility: ActivityUtils
+
+    constructor(contextInstance: Context) : super(contextInstance)
+    constructor(contextInstance: Context, utils: ActivityUtils) : super(contextInstance) {
+        utility = utils
+    }
+
     // Initialize View Binding
     val binding: ActivityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(context))
 
