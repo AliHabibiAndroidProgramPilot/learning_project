@@ -36,9 +36,24 @@ class ViewMainActivity : FrameLayout {
                     }
 
                     MotionEvent.ACTION_MOVE -> {
-                        view!!.animate()
-                            .x(event.rawX + dx)
-                            .y(event.rawY + dy)
+                        var newX = event.rawX + dx
+                        var newY = event.rawY + dy
+                        val parent = view?.parent as View
+                        // Clamp X
+                        if (newX < 0f) {
+                            newX = 0f
+                        } else if (newX + view.width > parent.width) {
+                            newX = (parent.width - view.width).toFloat()
+                        }
+                        // Clamp Y
+                        if (newY < 0f) {
+                            newY = 0f
+                        } else if (newY + view.height > parent.height) {
+                            newY = (parent.height - view.height).toFloat()
+                        }
+                        view.animate()
+                            .x(newX)
+                            .y(newY)
                             .setDuration(0)
                             .start()
                         return true
