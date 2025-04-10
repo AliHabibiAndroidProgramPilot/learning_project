@@ -10,18 +10,13 @@ class PresenterMainActivity(
 ) : BaseLifecycle {
 
     override fun onCreate() {
-        initializeData()
         btnFinished()
+        viewDragAndDropHandler()
     }
 
     override fun onResume() {
         showToast()
         super.onResume()
-    }
-
-    private fun initializeData() {
-        val text = model.setMainText()
-        view.setMainText(text)
     }
 
     private fun showToast() {
@@ -31,6 +26,10 @@ class PresenterMainActivity(
 
     private fun btnFinished() {
         view.onFinishButton()
+    }
+
+    private fun viewDragAndDropHandler() {
+        view.viewDragAndDrop()
     }
 
 }
