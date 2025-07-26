@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <com.example.learningproject.CustomRecycler
-        android:id="@+id/main_recycler"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" >
 
-</LinearLayout>
+        <com.example.learningproject.CustomRecycler
+            android:id="@+id/main_recycler"
+            app:title="جدید ترین محصولات"
+            android:scrollbarStyle="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.example.learningproject.CustomRecycler
+            android:id="@+id/main_recycler2"
+            app:title="بد ترین محصولات"
+            android:scrollbarStyle="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.example.learningproject.CustomRecycler
+            android:id="@+id/main_recycler3"
+            app:title="پر فروش ترین"
+            android:scrollbarStyle="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.example.learningproject.CustomRecycler
+            android:id="@+id/main_recycler4"
+            app:title="پر بازدید ترین ها"
+            android:scrollbarStyle="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

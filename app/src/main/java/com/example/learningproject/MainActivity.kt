@@ -17,6 +17,15 @@ class MainActivity : AppCompatActivity() {
         binding.mainRecycler.recycler().layoutManager =
             LinearLayoutManager(this, RecyclerView.HORIZONTAL, true)
         binding.mainRecycler.recycler().adapter = RecyclerAdapter(5)
+        binding.mainRecycler2.recycler().layoutManager =
+            LinearLayoutManager(this, RecyclerView.HORIZONTAL, true)
+        binding.mainRecycler2.recycler().adapter = RecyclerAdapter(8)
+        binding.mainRecycler3.recycler().layoutManager =
+            LinearLayoutManager(this, RecyclerView.HORIZONTAL, true)
+        binding.mainRecycler3.recycler().adapter = RecyclerAdapter(12)
+        binding.mainRecycler4.recycler().layoutManager =
+            LinearLayoutManager(this, RecyclerView.HORIZONTAL, true)
+        binding.mainRecycler4.recycler().adapter = RecyclerAdapter(6)
     }
 
 }

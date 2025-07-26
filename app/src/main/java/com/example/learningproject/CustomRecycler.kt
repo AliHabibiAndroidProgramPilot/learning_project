@@ -18,7 +18,12 @@ class CustomRecycler(context: Context, attributes: AttributeSet) :
     }
 
     private fun initializeAttributes(attributes: AttributeSet) {
-
+        context.obtainStyledAttributes(attributes, R.styleable.CustomRecycler)
+            .apply {
+                val title = getString(R.styleable.CustomRecycler_title)
+                binding.txtTitle.text = title
+                recycle()
+            }
     }
 
     fun recycler(): RecyclerView = binding.recycler
